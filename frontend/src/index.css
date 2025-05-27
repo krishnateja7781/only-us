@@ -1,17 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Global romantic styles */
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
         "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
         "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(135deg, #FADADD 0%, #E8DAEF 50%, #D6ECFF 100%);
+    min-height: 100vh;
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
+}
+
+/* Custom romantic animations */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.1); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.1); }
+    70% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200px 0; }
+    100% { background-position: calc(200px + 100%) 0; }
+}
+
+.heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background-size: 200px 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* Romantic button styles */
+.btn-romantic {
+    @apply px-6 py-3 rounded-full font-medium transition-all duration-300 transform;
+    background: linear-gradient(135deg, #F8BBD9, #E8DAEF);
+    box-shadow: 0 4px 15px rgba(248, 187, 217, 0.4);
+}
+
+.btn-romantic:hover {
+    @apply scale-105;
+    box-shadow: 0 6px 20px rgba(248, 187, 217, 0.6);
+}
+
+.btn-romantic:active {
+    @apply scale-95;
+}
+
+/* Message bubble styles */
+.message-bubble {
+    @apply px-4 py-2 rounded-2xl max-w-xs break-words;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.message-bubble.sent {
+    background: linear-gradient(135deg, #F8BBD9, #FADADD);
+    box-shadow: 0 2px 10px rgba(248, 187, 217, 0.3);
+}
+
+.message-bubble.received {
+    background: linear-gradient(135deg, #E8DAEF, #D6ECFF);
+    box-shadow: 0 2px 10px rgba(232, 218, 239, 0.3);
+}
+
+/* Heart floating animation */
+.floating-heart {
+    position: absolute;
+    font-size: 20px;
+    color: #F8BBD9;
+    pointer-events: none;
+    animation: floatUp 3s ease-out forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(1.5);
+    }
+}
+
+/* Romantic scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(232, 218, 239, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #F8BBD9, #E8DAEF);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #E8DAEF, #F8BBD9);
 }
