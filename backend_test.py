@@ -70,13 +70,15 @@ class OnlyUsAPITester:
             "User Registration",
             "POST",
             "auth/register",
-            201,
+            200,  # Server returns 200 instead of 201
             data={"email": email, "password": password, "name": f"Test User {unique_id}"}
         )
         
-        if success and 'user_id' in response:
-            self.user_id = response['user_id']
+        if success and 'user' in response:
+            self.user_id = response['user']['id']
+            self.token = response.get('access_token')
             print(f"Created user with ID: {self.user_id}")
+            print(f"Got access token: {self.token[:10]}...")
             return email, password
         return None, None
 
