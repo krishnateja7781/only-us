@@ -168,7 +168,7 @@ class OnlyUsAPITester:
         success, response = self.run_test(
             "Get User Profile",
             "GET",
-            "users/profile",
+            "users/me",  # Endpoint might be 'users/me' instead of 'users/profile'
             200
         )
         
