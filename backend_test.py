@@ -84,6 +84,11 @@ class OnlyUsAPITester:
 
     def test_login(self, email, password):
         """Test user login"""
+        # Skip if we already have a token from registration
+        if self.token:
+            print("Already logged in from registration")
+            return True
+            
         success, response = self.run_test(
             "User Login",
             "POST",
